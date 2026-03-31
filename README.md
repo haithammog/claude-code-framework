@@ -41,6 +41,30 @@ Aim for under 100 lines — you have a 150-line cap enforced by the hook.
 node --version   # should be v18 or higher
 ```
 
+If Node.js is not installed, install it using your package manager:
+
+**macOS (Homebrew):**
+```bash
+brew install node
+```
+
+**Ubuntu / Debian:**
+```bash
+curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
+sudo apt-get install -y nodejs
+```
+
+**Windows:**
+Download and run the installer from [https://nodejs.org](https://nodejs.org), or use `winget`:
+```bash
+winget install OpenJS.NodeJS
+```
+
+After installing, verify:
+```bash
+node --version   # should be v18 or higher
+```
+
 ### 4. No API key setup needed
 The hook script calls the Anthropic API — Claude Code handles authentication automatically.  
 No `ANTHROPIC_API_KEY` environment variable is required in the hook.
