@@ -26,7 +26,7 @@
 <!-- One row per logical module. Update file paths and line ranges when they change. -->
 | Module | File | Lines | Purpose |
 |--------|------|-------|---------|
-|        |      |       |         |
+<!-- Add one row per logical module. Delete this comment when done. -->
 
 ## Data Flow
 <!-- Brief description of how data moves through the app. Max 5 lines. -->
@@ -36,14 +36,14 @@
 <!-- Where does execution start? What are the main CLI commands or API routes? -->
 | Type    | Location         | Description |
 |---------|-----------------|-------------|
-| CLI     |                  |             |
-| API     |                  |             |
+<!-- Add one row per entry point. Delete this comment when done. -->
 
 ## Current State
 <!-- What is working, what is partially done, what is not started. -->
-- ✅ 
-- 🔧 
-- ❌ 
+<!-- ✅ working | 🔧 in progress | ❌ not started -->
+- ✅
+- 🔧
+- ❌
 
 ## Known Issues & Next Priorities
 <!-- Keep this short and honest. Claude uses this to avoid re-investigating known problems. -->
@@ -52,5 +52,5 @@
 
 ## Conventions Claude Must Follow
 <!-- Rules that must not be broken across sessions. -->
-- 
-- 
+- Never hardcode links or commands — store them in a config file with comments describing each setting
+-

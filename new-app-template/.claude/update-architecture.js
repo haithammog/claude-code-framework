@@ -15,7 +15,8 @@ const fs = require("fs");
 const path = require("path");
 
 // ── Config ────────────────────────────────────────────────────────────────────
-const ARCH_FILE = path.join(process.cwd(), "ARCHITECTURE.md");
+const PROJECT_DIR = process.env.CLAUDE_PROJECT_DIR || process.cwd();
+const ARCH_FILE = path.join(PROJECT_DIR, "ARCHITECTURE.md");
 const MAX_LINES = 150;
 const MODEL = "claude-haiku-4-5-20251001"; // fast + cheap for hook use
 const SKIP_PATTERNS = [
@@ -61,9 +62,13 @@ process.stdin.on("end", async () => {
     if (fs.existsSync(filePath)) {
       const raw = fs.readFileSync(filePath, "utf8");
       const lines = raw.split("\n");
-      // Send first 120 lines — enough for signatures, imports, class definitions
-      changedContent = lines.slice(0, 120).join("\n");
-      if (lines.length > 120) changedContent += "\n... (truncated)";
+      changedContent = lines.slice(0, 500).join("\n");
+      if (lines.length > 500) {
+        changedContent += "\n... (truncated)";
+        process.stdout.write(
+          `[arch] WARNING: ${relPath} exceeds 500 lines — only first 500 sent to architecture hook. Consider splitting this file.\n`
+        );
+      }
     }
 
     // ── Ask Claude ──────────────────────────────────────────────────────────
@@ -114,6 +119,7 @@ Rules for updated_architecture (if meaningful):
       headers: {
         "Content-Type": "application/json",
         "anthropic-version": "2023-06-01",
+        "x-api-key": process.env.ANTHROPIC_API_KEY,
       },
       body: JSON.stringify({
         model: MODEL,
@@ -130,9 +136,10 @@ Rules for updated_architecture (if meaningful):
     const data = await response.json();
     const rawText = data?.content?.[0]?.text || "";
 
-    // Strip possible markdown fences
-    const clean = rawText.replace(/```json|```/g, "").trim();
-    const result = JSON.parse(clean);
+    // Extract JSON object robustly — ignore any surrounding text or markdown fences
+    const match = rawText.match(/\{[\s\S]*\}/);
+    if (!match) process.exit(0);
+    const result = JSON.parse(match[0]);
 
     if (result.meaningful && result.updated_architecture) {
       fs.writeFileSync(ARCH_FILE, result.updated_architecture, "utf8");

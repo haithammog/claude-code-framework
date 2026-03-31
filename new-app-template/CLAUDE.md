@@ -24,5 +24,4 @@ It decides whether the change is architecturally meaningful and updates the rele
 ## Constraints
 - Never read files not referenced in ARCHITECTURE.md unless strictly necessary
 - Never read entire files when a line range is given
-- If you discover a new issue, add it to Known Issues yourself — the hook covers structural changes, not observations
-- Don't hardcode any links or commands. All should be changable and stored in a conf file. And dd comments in the conf file that descript the confs
+- If you discover a new issue, add it to Known Issues yourself — the hook covers structural changes, not observations. Use the format: `N. [module] Issue description — discovered while doing X`
