@@ -33,6 +33,16 @@ const SKIP_PATTERNS = [
   /\.map$/,
 ];
 
+// ── Verify API key is available ───────────────────────────────────────────────
+if (!process.env.ANTHROPIC_API_KEY) {
+  process.stdout.write(
+    "[arch] WARNING: ANTHROPIC_API_KEY is not set — architecture hook will not run.\n" +
+    "[arch] Add it to your shell profile (e.g. ~/.bashrc or ~/.zshrc):\n" +
+    "[arch]   export ANTHROPIC_API_KEY=your_key_here\n"
+  );
+  process.exit(0);
+}
+
 // ── Read hook input from stdin ────────────────────────────────────────────────
 let hookInput = "";
 process.stdin.setEncoding("utf8");

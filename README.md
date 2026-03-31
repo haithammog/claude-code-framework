@@ -65,9 +65,20 @@ After installing, verify:
 node --version   # should be v18 or higher
 ```
 
-### 4. No API key setup needed
-The hook script calls the Anthropic API — Claude Code handles authentication automatically.  
-No `ANTHROPIC_API_KEY` environment variable is required in the hook.
+### 4. Set your Anthropic API key
+The hook script calls the Anthropic API directly and requires `ANTHROPIC_API_KEY` to be set in your shell environment.
+
+Add it to your shell profile (`~/.bashrc`, `~/.zshrc`, etc.):
+```bash
+export ANTHROPIC_API_KEY=your_key_here
+```
+
+Then reload your shell:
+```bash
+source ~/.bashrc   # or source ~/.zshrc
+```
+
+If the key is missing, the hook will print a visible warning in Claude Code's output instead of failing silently.
 
 ### 5. Commit to version control
 ```bash
