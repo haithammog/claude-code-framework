@@ -16,7 +16,7 @@ const path = require("path");
 
 const PROJECT_DIR = process.env.CLAUDE_PROJECT_DIR || process.cwd();
 const ARCH_FILE = path.join(PROJECT_DIR, "ARCHITECTURE.md");
-const LINE_CAP = 160;
+const LINE_CAP = 200;
 
 try {
   if (!fs.existsSync(ARCH_FILE)) {

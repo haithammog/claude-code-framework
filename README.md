@@ -34,7 +34,7 @@ cp -r .claude/       /your-project/.claude/
 ### 2. Fill in ARCHITECTURE.md
 Open `ARCHITECTURE.md` and fill in the sections for your project.  
 The more accurate this initial state, the better the hook's updates will be.  
-Aim for under 100 lines — you have a 150-line cap enforced by the hook.
+Aim for under 150 lines — you have a 200-line cap enforced by the hook.
 
 ### 3. Ensure Node 18+ is available
 ```bash
@@ -94,7 +94,7 @@ The hook **ignores**:
 
 ## Keeping ARCHITECTURE.md Healthy
 
-- **150-line cap**: the hook trims stale entries when it updates, enforcing the cap
+- **200-line cap**: the hook trims stale entries when it updates, enforcing the cap
 - **Manual corrections**: if the hook writes something wrong, just edit `ARCHITECTURE.md` directly — the next meaningful change will build on your correction
 - **New sessions**: always start with `ARCHITECTURE.md` already injected — no manual pasting needed
 

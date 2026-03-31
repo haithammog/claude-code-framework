@@ -3,7 +3,7 @@
   CLAUDE CODE INSTRUCTIONS:
   - Read this file at the START of every session before touching any code.
   - When making changes, update ONLY the affected section(s) below.
-  - Keep this file under 150 lines. Trim outdated entries rather than appending.
+  - Keep this file under 200 lines. Trim outdated entries rather than appending.
   - Do NOT read source files to orient yourself — use this file instead.
   - Only read a source file when you are about to modify it.
 -->

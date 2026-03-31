@@ -17,7 +17,7 @@ const path = require("path");
 // ── Config ────────────────────────────────────────────────────────────────────
 const PROJECT_DIR = process.env.CLAUDE_PROJECT_DIR || process.cwd();
 const ARCH_FILE = path.join(PROJECT_DIR, "ARCHITECTURE.md");
-const MAX_LINES = 150;
+const MAX_LINES = 200;
 const MODEL = "claude-haiku-4-5-20251001"; // fast + cheap for hook use
 const SKIP_PATTERNS = [
   /ARCHITECTURE\.md$/,       // don't recurse on the file itself
